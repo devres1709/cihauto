@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataType Version="2.0" Description="" BaseCustomizationLevel="1" CustomizationLevel="1" BaseType="" Deprecated="false" DeprecatedDescription="" Final="false" Mutable="true" Release="" OldStyleAVo="false">
+    <Properties>
+        {PROPERTIES}
+    </Properties>
+    <Constants />
+</DataType>
