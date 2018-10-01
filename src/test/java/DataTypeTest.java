@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+
 import static org.junit.Assert.*;
 
 public class DataTypeTest {
@@ -45,23 +46,9 @@ public class DataTypeTest {
             assertTrue(error);
         }
     }
-
-
-
-
-
-
-    private String stringFromFileWithoutSpaces(Scanner scanner){
-        StringBuilder result = new StringBuilder();
-        while (scanner.hasNext()){
-            result.append(scanner.nextLine());
-        }
-        return result.toString().replace(" ", "").replace("\\n", "");
-    }
-
     private boolean compareResult(String pathToFileResultOfWork, String pathToStandert) throws FileNotFoundException {
-        String resultOfWork = stringFromFileWithoutSpaces(new Scanner(new File(pathToFileResultOfWork)));
-        String standart = stringFromFileWithoutSpaces(new Scanner(new File(pathToStandert)));
+        String resultOfWork = TestUtils.stringFromFileWithoutSpaces(new Scanner(new File(pathToFileResultOfWork)));
+        String standart = TestUtils.stringFromFileWithoutSpaces(new Scanner(new File(pathToStandert)));
         System.out.println(standart + "\n" + resultOfWork);
         return resultOfWork.equals(standart);
     }

@@ -45,16 +45,13 @@ public class LogicClassTest {
     public void doClassTest() throws Exception {
         String propForFirstDT = "OrderId MyIndex";
         String typesForFirstDT = "String Integer";
-
         String propForSecondDT = "CustonerId AddresId";
         String typeForSecondDT = "Long Long";
-
         DataType firstDT = new DataType("XMyFirstDataType", propForFirstDT, typesForFirstDT);
         DataType secondDT = new DataType("XMySecondDataType", propForSecondDT, typeForSecondDT);
         List<DataType>dt = new ArrayList<DataType>();
         dt.add(firstDT);
         dt.add(secondDT);
-
         LogicClass logicClass = new LogicClass("XMyTestImpl", dt);
 
     }

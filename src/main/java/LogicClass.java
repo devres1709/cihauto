@@ -75,33 +75,33 @@ public class LogicClass {
     private String generateFields(){
         StringBuilder result = new StringBuilder();
         for(DataType dt : fields)
-            result.append("private " + dt.getName() +
-                    " " + new StringBuffer(dt.getName()).replace(0, 1, dt.getName().charAt(0) + "".toLowerCase()));
+            result.append("private " + dt.getName() + " " + doFieldName(dt.getName()) + ";\n\t");
         return result.toString();
+    }
+
+    private static String doFieldName(String className){
+       StringBuilder sb = new StringBuilder(className);
+       sb.replace(0, 1, (className.charAt(0) + "").toLowerCase());
+       return sb.toString();
     }
     //insert {GETTERS}
     private String genereteGettes(){
         StringBuilder result = new StringBuilder();
         result.append("\n");
-
-        for(DataType dt : fields)
-            result.append("public "+ dt.getName()  + " get" + dt.getName() +"() {\n" +
-                    "        return "+ new StringBuffer(dt.getName()).replace(0, 1, dt.getName().charAt(0) + "".toLowerCase())  +";\n" +
-                    "    }");
+        for(DataType dt : fields) {
+            result.append("\tpublic " + dt.getName() + " get" + dt.getName() + "() {");
+            result.append(" return " + doFieldName(dt.getName()) + "; }\n\n");
+        }
         return result.toString();
     }
     //{SETTERS}
     private String generateSetters(){
         StringBuilder result = new StringBuilder();
         for(DataType dt : fields) {
-            result.append("public void set");
-            result.append(" " + dt.getName());
-            result.append(" my" +
-                    new StringBuffer(dt.getName()).replace(0, 1, dt.getName().charAt(0) + "".toLowerCase()) + ") {\n");
-            result.append("this." + new StringBuffer(dt.getName()).replace(0, 1, dt.getName().charAt(0) + "".toLowerCase()));
-            result.append(" = " + new StringBuffer(dt.getName()).replace(0, 1, dt.getName().charAt(0) + "".toLowerCase()));
-            result.append("}");
-
+            result.append("public void set" + dt.getName());
+            result.append( "(" + dt.getName() + " my" + dt.getName() + "){\n");
+            result.append("\t\tthis." + doFieldName(dt.getName()) + " = " + doFieldName(dt.getName() + ";\n"));
+            result.append("\t}\n\t");
         }
         return result.toString();
 

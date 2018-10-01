@@ -48,9 +48,7 @@ public class DataType {
 
     private boolean doXml() {
         try {
-
             StringBuilder userProp = new StringBuilder();
-
             for (Map.Entry<String, String> entry : propNameAndType.entrySet())
                 userProp.append(template.replace("{PROPERTY_NAME}", entry.getKey())
                         .replace("{TYPE}", entry.getValue()));
