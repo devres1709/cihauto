@@ -2,8 +2,15 @@ import java.io.*;
 import java.util.*;
 
 public class DataType {
+
+    public enum Type {
+        INPUT,
+        OUTPUT
+    }
+
+    private DataType.Type type;
     private String name;
-    Map<String, String> propNameAndType = new LinkedHashMap<String, String>();
+    private Map<String, String> propNameAndType = new LinkedHashMap<String, String>();
     private static String template = "\n<Property Name=\"{PROPERTY_NAME}X1\" Version=\"2.0\" Description=\"\" CustomizationLevel=\"1\" BaseCustomizationLevel=\"1\" Type=\"{TYPE}\" Deprecated=\"false\" DeprecatedDescription=\"\" Release=\"\" InitMethod=\"\" InitValue=\"\" ReadOnly=\"false\" DirtySupported=\"false\" ReadOnlyByMe=\"false\" DeprecatedByMe=\"false\" />";
 
     private void doPropNameAndTypeMap(String prop, String type) throws Exception {
@@ -21,7 +28,22 @@ public class DataType {
     }
 
     public void setName(String name) {
-        this.name = name;
+        switch (this.type) {
+            case INPUT:
+                if (!name.endsWith("Input"))
+                    this.name = name + "Input";
+                else
+                    this.name = name;
+                break;
+            case OUTPUT:
+                if (!name.endsWith("Output"))
+                    this.name = name + "Output";
+                else
+                    this.name = name;
+                break;
+        }
+
+
     }
 
     public Map<String, String> getPropNameAndType() {
@@ -40,8 +62,9 @@ public class DataType {
         DataType.template = template;
     }
 
-    public DataType(String name, String properties, String type) throws Exception {
-        this.name = name;
+    public DataType(String name, String properties, String type, Type io) throws Exception {
+        this.type = io;
+        setName(name);
         doPropNameAndTypeMap(properties, type);
         doXml();
     }
@@ -49,18 +72,19 @@ public class DataType {
     private boolean doXml() {
         try {
             StringBuilder userProp = new StringBuilder();
-            for (Map.Entry<String, String> entry : propNameAndType.entrySet())
+            for (Map.Entry<String, String> entry : propNameAndType.entrySet()) {
                 userProp.append(template.replace("{PROPERTY_NAME}", entry.getKey())
                         .replace("{TYPE}", entry.getValue()));
+            }
             userProp.append("\n");
 
             StringBuilder result = new StringBuilder();
             Scanner scanner = new Scanner(new File("src\\main\\resources\\datatype.xml"));
             //output dir
             String dir = "src\\test\\resourcesAfterTest\\";
-            BufferedWriter writer = new BufferedWriter(new FileWriter(dir  + name + ".type"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(dir + name + ".type"));
             while (scanner.hasNext())
-                result.append(scanner.nextLine());
+                result.append(scanner.nextLine() + "\n");
             writer.append(result.toString().replace("{PROPERTIES}", userProp.toString()));
             writer.close();
         } catch (IOException e) {

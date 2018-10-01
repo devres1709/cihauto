@@ -47,8 +47,8 @@ public class LogicClassTest {
         String typesForFirstDT = "String Integer";
         String propForSecondDT = "CustonerId AddresId";
         String typeForSecondDT = "Long Long";
-        DataType firstDT = new DataType("XMyFirstDataType", propForFirstDT, typesForFirstDT);
-        DataType secondDT = new DataType("XMySecondDataType", propForSecondDT, typeForSecondDT);
+        DataType firstDT = new DataType("XMyFirstDataType", propForFirstDT, typesForFirstDT, DataType.Type.INPUT);
+        DataType secondDT = new DataType("XMySecondDataType", propForSecondDT, typeForSecondDT, DataType.Type.OUTPUT);
         List<DataType>dt = new ArrayList<DataType>();
         dt.add(firstDT);
         dt.add(secondDT);
