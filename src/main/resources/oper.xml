@@ -2,10 +2,10 @@
 <Operation Version="2.0" Description="" BaseCustomizationLevel="1" CustomizationLevel="1" ProviderProfile="API/Application Framework Implementation" Category="" CustomParamClassNames="false" BeginConversation="false" Status="DRAFT" ExecutionPolicy="" SamServiceName="" Release="" DeprecatedSinceRelease="" DeprecatedDescription="" BulkOperation="false" BulkOperationId="" CompatibilityHandlerClassName="">
     <Properties>
         <Property key="Stateful" value="false" />
-        <Property key="ServiceClass" value="ru.atc.oms.cih.services.orderingactivities.XCancelOrdersImpl" />
+        <Property key="ServiceClass" value="package ru.atc.oms.cih.services.orderingactivities;" />
     </Properties>
     <Inputs>
-        <Input Name="ApplicationContext" Description="" Usage="Optional" DefaultValue="" DataType="com.amdocs.cih.common.core.sn.ApplicationContext" CustomizationLevel="1" BaseCustomizationLevel="1" ExternalType="false">
+        <Input Name="ApplicationContext" Description="" Usage="Optional" DefaultValue="" DataType="amdocs.epi.management.services.ApplicationContext" CustomizationLevel="1" BaseCustomizationLevel="1" ExternalType="false">
             <Properties />
         </Input>
         <Input Name="OrderingContext" Description="" Usage="Optional" DefaultValue="" DataType="com.amdocs.cih.common.datatypes.OrderingContext" CustomizationLevel="1" BaseCustomizationLevel="1" ExternalType="false">
@@ -14,25 +14,32 @@
         <Input Name="MaskInfo" Description="" Usage="Optional" DefaultValue="" DataType="com.amdocs.cih.common.core.MaskInfo" CustomizationLevel="1" BaseCustomizationLevel="1" ExternalType="false">
             <Properties />
         </Input>
-        <Input Name="CancelOrdersInput" Description="" Usage="Optional" DefaultValue="" DataType="ru.atc.cih.common.datatypes.CancelOrdersInput" CustomizationLevel="1" BaseCustomizationLevel="1" ExternalType="false">
-            <Properties />
-        </Input>
+        <!--MyTestInput-->
+        <!--<Input Name="{INPUT}" Description="" Usage="Optional" DefaultValue="" DataType="ru.atc.cih.datatype.general.{INPUT}" CustomizationLevel="1" BaseCustomizationLevel="1" ExternalType="false">-->
+            <!--<Properties />-->
+        <!--</Input>-->
+        {INPUT_PROP}
     </Inputs>
     <Outputs>
-        <Output Name="CancelOrdersOutput" Description="" Usage="Optional" DefaultValue="" DataType="ru.atc.cih.common.datatypes.CancelOrdersOutput" CustomizationLevel="1" BaseCustomizationLevel="1" ExternalType="false" SimulationExpr="" AsyncOutput="false">
-            <Properties />
-        </Output>
+        <!--MyTestOutput-->
+        <!--<Output Name="{OUTPUT}" Description="" Usage="Optional" DefaultValue="" DataType="ru.atc.cih.datatype.general.{OUTPUT}" CustomizationLevel="1" BaseCustomizationLevel="1" ExternalType="false" SimulationExpr="" AsyncOutput="false">-->
+            <!--<Properties />-->
+        <!--</Output>-->
+        {OUTPUT_PROP}
     </Outputs>
     <Faults>
         <Fault Name="InvalidUsageException" Description="" ExceptionClassName="com.amdocs.cih.exception.InvalidUsageException" CustomizationLevel="1" BaseCustomizationLevel="1" GenerateCheckedException="false" />
     </Faults>
     <Bindings>
-        <EjbBinding MethodName="CancelOrders" Action="Call" ServiceName="EJB_Service" ResourceName="" Category="" CustomizationLevel="1" BaseCustomizationLevel="1">
+        <!--XMyTestClass-->
+        <EjbBinding MethodName="{OPER_NAME}" Action="Call" ServiceName="EJB_Service" ResourceName="" Category="" CustomizationLevel="1" BaseCustomizationLevel="1">
             <ParameterOrder>
                 <Param name="ApplicationContext" index="0" />
                 <Param name="OrderingContext" index="1" />
                 <Param name="MaskInfo" index="2" />
-                <Param name="CancelOrdersInput" index="3" />
+                <!--MyTestInput-->
+                <!--<Param name="{INPUT}" index="3" />-->
+                {INPUT_PARAM}
             </ParameterOrder>
         </EjbBinding>
         <JmsBinding ServiceName="JMS_Service" ResourceName="" Category="" CustomizationLevel="1" BaseCustomizationLevel="1" />
@@ -51,20 +58,20 @@
             </Artifact>
             <Artifact Type="ParamsBlockInputs" Selected="true" CustomizationLevel="1" BaseCustomizationLevel="1">
                 <Attributes>
-                    <Attribute Name="className" CustomizationLevel="1" BaseCustomizationLevel="1">com.amdocs.cih.services.oms.interfaces.IOmsServicesCancelOrdersInputs</Attribute>
+                    <Attribute Name="className" CustomizationLevel="1" BaseCustomizationLevel="1">com.amdocs.cih.services.oms.interfaces.IOmsServicesX{OPER_NAME}Inputs</Attribute>
                     <Attribute Name="useDefaultClassName" CustomizationLevel="1" BaseCustomizationLevel="1">true</Attribute>
                 </Attributes>
             </Artifact>
             <Artifact Type="ParamsBlockResults" Selected="true" CustomizationLevel="1" BaseCustomizationLevel="1">
                 <Attributes>
-                    <Attribute Name="className" CustomizationLevel="1" BaseCustomizationLevel="1">com.amdocs.cih.services.oms.interfaces.IOmsServicesCancelOrdersResults</Attribute>
+                    <Attribute Name="className" CustomizationLevel="1" BaseCustomizationLevel="1">com.amdocs.cih.services.oms.interfaces.IOmsServicesX{OPER_NAME}Results</Attribute>
                     <Attribute Name="useDefaultClassName" CustomizationLevel="1" BaseCustomizationLevel="1">true</Attribute>
                 </Attributes>
             </Artifact>
             <Artifact Type="EJB" ServiceName="EJB_Service" Selected="true" CustomizationLevel="1" BaseCustomizationLevel="1">
                 <Attributes>
                     <Attribute Name="hasRole" CustomizationLevel="1" BaseCustomizationLevel="1">false</Attribute>
-                    <Attribute Name="roleName" CustomizationLevel="1" BaseCustomizationLevel="1">PR:Ordering:IOmsServices.CancelOrders</Attribute>
+                    <Attribute Name="roleName" CustomizationLevel="1" BaseCustomizationLevel="1">PR:Ordering:IOmsServices.{OPER_NAME}</Attribute>
                     <Attribute Name="transactionAttribute" CustomizationLevel="1" BaseCustomizationLevel="1">Required</Attribute>
                 </Attributes>
             </Artifact>
