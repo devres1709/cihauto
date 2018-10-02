@@ -1,17 +1,32 @@
 package ru.atc.oms.cih.services.orderingactivities;
 import com.amdocs.cih.exception.CihBaseException;
-{DATATYPENAME}
+
+import ru.atc.cih.datatype.general.MyTestInput;
+import ru.atc.cih.datatype.general.MyTestOutput;
 import amdocs.oms.cih.services.base.CihStatelessServiceBase;
 import amdocs.oms.infra.ErrorCode;
 
 
-public class {CLASSNAME} extends CihStatelessServiceBase {
+public class XMyTestClassImpl extends CihStatelessServiceBase {
 
-    {DATATYPIES}
+    private MyTestInput myTestInput;
+	private MyTestOutput myTestOutput;
+	
 
-    {GETTERS}
+    
+	public MyTestInput getMyTestInput() { return myTestInput; }
 
-    {SETTERS}
+	public MyTestOutput getMyTestOutput() { return myTestOutput; }
+
+
+
+    public void setMyTestInput(MyTestInput myTestInput){
+		this.myTestInput = myTestInput;
+	}
+	public void setMyTestOutput(MyTestOutput myTestOutput){
+		this.myTestOutput = myTestOutput;
+	}
+	
 
     @Override
     protected ErrorCode executeImpl() throws CihBaseException {

@@ -16,12 +16,12 @@ public class XMyTestClassImpl extends CihStatelessServiceBase {
         return myTestInput;
     }
 
-    public void setMyTestInput(MyTestInput myTestInput) {
-        this.myTestInput = myTestInput;
-    }
-
     public MyTestOutput getMyTestOutput() {
         return myTestOutput;
+    }
+
+    public void setMyTestInput(MyTestInput myTestInput) {
+        this.myTestInput = myTestInput;
     }
 
     public void setMyTestOutput(MyTestOutput myTestOutput) {

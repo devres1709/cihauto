@@ -77,7 +77,7 @@ public class LogicClass {
     private String getPackagePath(){
         StringBuilder result = new StringBuilder();
         for (DataType dt : fields)
-            result.append("\n" + packagePath.replace("{DATATYPENAME}", dt.getName()));
+            result.append("\n" + packagePath.replace("{DATATYPENAME}", dt.getName() + ";"));
         return result.toString();
     }
 
@@ -109,23 +109,12 @@ public class LogicClass {
         StringBuilder result = new StringBuilder();
         for(DataType dt : fields) {
             result.append("public void set" + dt.getName());
-            result.append( "(" + dt.getName() + " my" + dt.getName() + "){\n");
+            result.append( "(" + dt.getName() + " "  + doFieldName(dt.getName() + "){\n"));
             result.append("\t\tthis." + doFieldName(dt.getName()) + " = " + doFieldName(dt.getName() + ";\n"));
             result.append("\t}\n\t");
         }
         return result.toString();
-
     }
-
-
-
-
-
-
-
-
-
-
 }
 
 

@@ -18,7 +18,7 @@ public class DataTypeTest {
         DataType dataTypeCreateor = new DataType("PromoEquipSvcInfo", prop, type, DataType.Type.INPUT);
         String newName = dataTypeCreateor.getName();
         assertEquals("PromoEquipSvcInfoInput", newName);
-        assertTrue(compareResult("src\\test\\resources\\PromoEquipSvcInfo.type",
+        assertTrue(TestUtils.compareResult("src\\test\\resources\\PromoEquipSvcInfo.type",
                 "src\\test\\resourcesAfterTest\\" + newName +".type"));
 
 
@@ -29,7 +29,7 @@ public class DataTypeTest {
         String type = "String String String String";
         String prop = "OrderId ApId Lob Technology";
         DataType dataType = new DataType("CeaseOrderActionsInfoTest", prop, type, DataType.Type.OUTPUT);
-        assertTrue(compareResult("src\\test\\resourcesAfterTest\\XCeaseOrderActionsInfoTest.type",
+        assertTrue(TestUtils.compareResult("src\\test\\resourcesAfterTest\\XCeaseOrderActionsInfoTest.type",
                 "src\\test\\resources\\XCeaseOrderActionsInfo.type"));
         File file = new File("src\\test\\resourcesAfterTest\\CeaseOrderActionsInfoTest.type");
         file.delete();
@@ -58,7 +58,7 @@ public class DataTypeTest {
         DataType dataType = new DataType("MyTestInput", prop, type, DataType.Type.INPUT);
         String newName = dataType.getName();
         assertEquals("MyTestInput", newName);
-        assertTrue(compareResult("src\\test\\resources\\MyTestInput.type",
+        assertTrue(TestUtils.compareResult("src\\test\\resources\\MyTestInput.type",
                 "src\\test\\resourcesAfterTest\\" + newName +".type"));
 
 
@@ -66,12 +66,7 @@ public class DataTypeTest {
     }
 
 
-    private boolean compareResult(String pathToFileResultOfWork, String pathToStandert) throws FileNotFoundException {
-        String resultOfWork = TestUtils.stringFromFileWithoutSpaces(new Scanner(new File(pathToFileResultOfWork)));
-        String standart = TestUtils.stringFromFileWithoutSpaces(new Scanner(new File(pathToStandert)));
-        System.out.println(standart + "\n" + resultOfWork);
-        return resultOfWork.equals(standart);
-    }
+
 
 
 }
