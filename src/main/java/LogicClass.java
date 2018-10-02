@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class LogicClass {
     List<DataType> fields;
     String name;
+    private static String packagePath = "import ru.atc.cih.datatype.general.{DATATYPENAME}";
 
     public LogicClass(String name, List<DataType> fields) throws IOException {
         nameValid(name);
@@ -58,6 +59,7 @@ public class LogicClass {
             classContent.append(scanner.nextLine() + "\n");
 
         String result = classContent.toString().replace("{CLASSNAME}", name)
+                .replace("{DATATYPENAME}", getPackagePath())
                 .replace("{DATATYPIES}", generateFields())
                 .replace("{GETTERS}", genereteGettes())
                 .replace("{SETTERS}", generateSetters());
@@ -69,6 +71,14 @@ public class LogicClass {
         BufferedWriter writer = new BufferedWriter(new FileWriter(dir + name + ".java"));
         writer.write(contextForClass());
         writer.close();
+    }
+
+    //insert in {DATATYPENAME}
+    private String getPackagePath(){
+        StringBuilder result = new StringBuilder();
+        for (DataType dt : fields)
+            result.append("\n" + packagePath.replace("{DATATYPENAME}", dt.getName()));
+        return result.toString();
     }
 
     //insert in {DATATYPIES}
