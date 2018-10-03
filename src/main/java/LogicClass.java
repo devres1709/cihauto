@@ -54,7 +54,7 @@ public class LogicClass {
 
     private String contextForClass() throws FileNotFoundException {
         StringBuilder classContent = new StringBuilder();
-        Scanner scanner = new Scanner(new File("src\\main\\resources\\classTemplate.java"));
+        Scanner scanner = new Scanner(new File("src\\main\\resources\\templates\\classTemplate.java"));
         while (scanner.hasNext())
             classContent.append(scanner.nextLine() + "\n");
 

@@ -72,23 +72,5 @@ public class LogicClassTest {
         System.out.println("XML 2 Ok!");
     }
 
-    @Test
-    public void test(){
-        String string1 = "<?xmlversion=\"1.0\"encoding=\"UTF-8\"?><DataTypeVersion=\"2.0\"Description=\"\"BaseCustomizationLevel=\"1\"CustomizationLevel=\"1\"BaseType=\"\"Deprecated=\"false\"DeprecatedDescription=\"\"Final=\"false\"Mutable=\"true\"Release=\"\"OldStyleAVo=\"false\"><Properties><PropertyName=\"MyStrinFieldX1\"Version=\"2.0\"Description=\"\"CustomizationLevel=\"1\"BaseCustomizationLevel=\"1\"Type=\"String\"Deprecated=\"false\"DeprecatedDescription=\"\"Release=\"\"InitMethod=\"\"InitValue=\"\"ReadOnly=\"false\"DirtySupported=\"false\"ReadOnlyByMe=\"false\"DeprecatedByMe=\"false\"/></Properties><Constants/></DataType>";
-        String string2 = "<?xmlversion=\"1.0\"encoding=\"UTF-8\"?><DataTypeVersion=\"2.0\"Description=\"\"BaseCustomizationLevel=\"1\"CustomizationLevel=\"1\"BaseType=\"\"Deprecated=\"false\"DeprecatedDescription=\"\"Final=\"false\"Mutable=\"true\"Release=\"\"OldStyleAVo=\"false\"><Properties><PropertyName=\"myStrinFieldX1\"Version=\"2.0\"Description=\"\"CustomizationLevel=\"1\"BaseCustomizationLevel=\"1\"Type=\"String\"Deprecated=\"false\"DeprecatedDescription=\"\"Release=\"\"InitMethod=\"\"InitValue=\"\"ReadOnly=\"false\"DirtySupported=\"false\"ReadOnlyByMe=\"false\"DeprecatedByMe=\"false\"/></Properties><Constants/></DataType>";
-
-
-        System.out.println("string1 : " + string1.length());
-        System.out.println("string2 : " + string2.length());
-
-        for (int i = 0; i < string1.length(); i++){
-            if(string1.charAt(i) != string2.charAt(i)){
-                System.out.println(string1.substring(i));
-                System.out.println(string2.substring(i));
-
-            }
-        }
-
-    }
 
 }

@@ -14,31 +14,20 @@
         <Input Name="MaskInfo" Description="" Usage="Optional" DefaultValue="" DataType="com.amdocs.cih.common.core.MaskInfo" CustomizationLevel="1" BaseCustomizationLevel="1" ExternalType="false">
             <Properties />
         </Input>
-        <!--MyTestInput-->
-        <!--<Input Name="{INPUT}" Description="" Usage="Optional" DefaultValue="" DataType="ru.atc.cih.datatype.general.{INPUT}" CustomizationLevel="1" BaseCustomizationLevel="1" ExternalType="false">-->
-            <!--<Properties />-->
-        <!--</Input>-->
         {INPUT_PROP}
     </Inputs>
     <Outputs>
-        <!--MyTestOutput-->
-        <!--<Output Name="{OUTPUT}" Description="" Usage="Optional" DefaultValue="" DataType="ru.atc.cih.datatype.general.{OUTPUT}" CustomizationLevel="1" BaseCustomizationLevel="1" ExternalType="false" SimulationExpr="" AsyncOutput="false">-->
-            <!--<Properties />-->
-        <!--</Output>-->
         {OUTPUT_PROP}
     </Outputs>
     <Faults>
         <Fault Name="InvalidUsageException" Description="" ExceptionClassName="com.amdocs.cih.exception.InvalidUsageException" CustomizationLevel="1" BaseCustomizationLevel="1" GenerateCheckedException="false" />
     </Faults>
     <Bindings>
-        <!--XMyTestClass-->
         <EjbBinding MethodName="{OPER_NAME}" Action="Call" ServiceName="EJB_Service" ResourceName="" Category="" CustomizationLevel="1" BaseCustomizationLevel="1">
             <ParameterOrder>
                 <Param name="ApplicationContext" index="0" />
                 <Param name="OrderingContext" index="1" />
                 <Param name="MaskInfo" index="2" />
-                <!--MyTestInput-->
-                <!--<Param name="{INPUT}" index="3" />-->
                 {INPUT_PARAM}
             </ParameterOrder>
         </EjbBinding>
@@ -58,13 +47,13 @@
             </Artifact>
             <Artifact Type="ParamsBlockInputs" Selected="true" CustomizationLevel="1" BaseCustomizationLevel="1">
                 <Attributes>
-                    <Attribute Name="className" CustomizationLevel="1" BaseCustomizationLevel="1">com.amdocs.cih.services.oms.interfaces.IOmsServicesX{OPER_NAME}Inputs</Attribute>
+                    <Attribute Name="className" CustomizationLevel="1" BaseCustomizationLevel="1">com.amdocs.cih.services.oms.interfaces.IOmsServices{OPER_NAME}Inputs</Attribute>
                     <Attribute Name="useDefaultClassName" CustomizationLevel="1" BaseCustomizationLevel="1">true</Attribute>
                 </Attributes>
             </Artifact>
             <Artifact Type="ParamsBlockResults" Selected="true" CustomizationLevel="1" BaseCustomizationLevel="1">
                 <Attributes>
-                    <Attribute Name="className" CustomizationLevel="1" BaseCustomizationLevel="1">com.amdocs.cih.services.oms.interfaces.IOmsServicesX{OPER_NAME}Results</Attribute>
+                    <Attribute Name="className" CustomizationLevel="1" BaseCustomizationLevel="1">com.amdocs.cih.services.oms.interfaces.IOmsServices{OPER_NAME}Results</Attribute>
                     <Attribute Name="useDefaultClassName" CustomizationLevel="1" BaseCustomizationLevel="1">true</Attribute>
                 </Attributes>
             </Artifact>

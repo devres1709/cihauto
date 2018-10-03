@@ -86,7 +86,7 @@ public class DataType {
             userProp.append("\n");
 
             StringBuilder result = new StringBuilder();
-            Scanner scanner = new Scanner(new File("src\\main\\resources\\datatype.xml"));
+            Scanner scanner = new Scanner(new File("src\\main\\resources\\templates\\datatype.xml"));
             //output dir
             String dir = "src\\test\\resourcesAfterTest\\";
             BufferedWriter writer = new BufferedWriter(new FileWriter(dir + name + ".type"));
