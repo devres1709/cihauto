@@ -5,32 +5,20 @@ import java.io.PrintStream;
 
 public class ProjectBuilder {
 
-    public static void build() throws IOException, InterruptedException {
-        Process proc = Runtime.getRuntime().exec("C:\\scripts\\buildCih.bat");
-
+    public static boolean build(String scriptName) throws IOException, InterruptedException {
+        Process proc = Runtime.getRuntime().exec("C:\\scripts\\" + scriptName + ".bat");
 
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-        BufferedReader stdError = new BufferedReader(new  InputStreamReader(proc.getErrorStream()));
-
         PrintStream ps = new PrintStream(System.out, true, "UTF-8");
 
-        ps.println("Here is the standard output of the command:\n");
         String result;
-        while ((result = stdInput.readLine()) != null)
+        while ((result = stdInput.readLine()) != null) {
+            if(result.contains("BUILD FAILED"))
+                return false;
             ps.println(result);
-
-        ps.println("Here is the standard error of the command (if any):\n");
-        while ((result = stdError.readLine()) != null)
-            ps.println(result);
-
+        }
         proc.waitFor();
-
-
-
-
-
-
-
+        return true;
     }
 
 }

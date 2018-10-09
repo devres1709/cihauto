@@ -1,18 +1,29 @@
+package Impl;
+
+import Interfaces.FileCreator;
+
 import java.io.*;
 import java.util.List;
 import java.util.Scanner;
 
-public class LogicClass {
+/**
+ * class Impl.LogicClass implement generation of java class, witch
+ * extends CihStatelessServiceBase and implement methods of
+ * CihStatelessServiceBase. Also this class generation getters and
+ * setter from List<Impl.DataType> fields;
+ */
+
+public class LogicClass implements FileCreator {
     List<DataType> fields;
     String name;
-    private static String packagePath = "import ru.atc.cih.datatype.general.{DATATYPENAME}";
+    private static String packagePath = "import ru.atc.cih.common.datatypes.{DATATYPENAME}";
 
     public LogicClass(String name, List<DataType> fields) throws IOException {
         nameValid(name);
         if(fields == null)
             return;
         this.fields = fields;
-        doClass();
+        doFile();
     }
 
     public List<DataType> getFields() {
@@ -31,6 +42,11 @@ public class LogicClass {
         nameValid(name);
     }
 
+    /**
+     *private void nameValid(String name) implement name
+     * verification for valid
+     * @param name -correct name
+     */
     private void nameValid(String name) {
         StringBuffer tempName = new StringBuffer(name);
         if(name.startsWith("xX") || name.startsWith("xx")){
@@ -52,6 +68,11 @@ public class LogicClass {
         this.name = tempName.toString();
     }
 
+    /**
+     * private String contextForClass() load template
+     * @return string template
+     * @throws FileNotFoundException
+     */
     private String contextForClass() throws FileNotFoundException {
         StringBuilder classContent = new StringBuilder();
         Scanner scanner = new Scanner(new File("src\\main\\resources\\templates\\classTemplate.java"));
@@ -66,11 +87,20 @@ public class LogicClass {
         return result;
     }
 
-    private void doClass() throws IOException {
-        String dir = "src\\test\\resourcesAfterTest\\";
-        BufferedWriter writer = new BufferedWriter(new FileWriter(dir + name + ".java"));
-        writer.write(contextForClass());
-        writer.close();
+    public boolean doFile() {
+        try{
+            //"src\\test\\resourcesAfterTest\\"; // - for test
+            String dir = "C:\\OMS\\EclipseWS\\cord9deploy\\v81_10\\application_server\\src\\ru\\atc\\oms\\cih\\services\\orderingactivities\\";
+            BufferedWriter writer = new BufferedWriter(new FileWriter(dir + name + ".java"));
+            writer.write(contextForClass());
+            writer.flush();
+            writer.close();
+            return true;
+        }catch(IOException e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+
     }
 
     //insert in {DATATYPENAME}
@@ -89,12 +119,21 @@ public class LogicClass {
         return result.toString();
     }
 
+    /**
+     * private static String doFieldName(String className) it's
+     * like string formater:
+     *
+     * input: XMyTestInput
+     * output: xMyTestInput
+     * @param className - name of class field
+     * @return
+     */
     private static String doFieldName(String className){
        StringBuilder sb = new StringBuilder(className);
        sb.replace(0, 1, (className.charAt(0) + "").toLowerCase());
        return sb.toString();
     }
-    //insert {GETTERS}
+    //insert in {GETTERS}
     private String genereteGettes(){
         StringBuilder result = new StringBuilder();
         result.append("\n");
@@ -104,7 +143,7 @@ public class LogicClass {
         }
         return result.toString();
     }
-    //{SETTERS}
+    //insert in {SETTERS}
     private String generateSetters(){
         StringBuilder result = new StringBuilder();
         for(DataType dt : fields) {

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<DataType Version="2.0" Description="" BaseCustomizationLevel="1" CustomizationLevel="1" BaseType="" Deprecated="false" DeprecatedDescription="" Final="false" Mutable="true" Release="" OldStyleAVo="false">
-    <Properties>
-        
-<Property Name="MyStrinFieldX1" Version="2.0" Description="" CustomizationLevel="1" BaseCustomizationLevel="1" Type="String" Deprecated="false" DeprecatedDescription="" Release="" InitMethod="" InitValue="" ReadOnly="false" DirtySupported="false" ReadOnlyByMe="false" DeprecatedByMe="false" />
-
-    </Properties>
-    <Constants />
-</DataType>

@@ -1,4 +1,7 @@
 
+import Impl.DataType;
+import Impl.LogicClass;
+import Impl.Operation;
 import org.junit.Assert;
 import org.junit.Test;
 

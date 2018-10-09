@@ -1,3 +1,5 @@
+import Impl.DataType;
+import Impl.LogicClass;
 import org.junit.Test;
 
 import java.io.IOException;

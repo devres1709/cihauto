@@ -6,7 +6,7 @@ import java.util.UUID;
 public class CihBuilderTest {
     @Test
     public void doBuild() throws IOException, InterruptedException {
-        ProjectBuilder.build();
+        ProjectBuilder.build("buildCih");
     }
 
     @Test

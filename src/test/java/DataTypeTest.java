@@ -1,10 +1,10 @@
 
 
+import Impl.DataType;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.util.UUID;
 
 
 import static org.junit.Assert.*;
@@ -60,10 +60,8 @@ public class DataTypeTest {
         assertEquals("MyTestInput", newName);
         assertTrue(TestUtils.compareResult("src\\test\\resources\\MyTestInput.type",
                 "src\\test\\resourcesAfterTest\\" + newName +".type"));
-
-
-
     }
+
 
 
 
