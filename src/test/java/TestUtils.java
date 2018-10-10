@@ -3,6 +3,11 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class TestUtils {
+
+    public static final String TEST_DIR = "src\\test\\resourcesAfterTest\\";
+    public static final String TEST_RESOURCES = "src\\test\\resources\\";
+
+
     public static String stringFromFileWithoutSpaces(Scanner scanner){
         StringBuilder result = new StringBuilder();
         while (scanner.hasNext()){

@@ -1,32 +1,32 @@
 package ru.atc.oms.cih.services.orderingactivities;
-
 import com.amdocs.cih.exception.CihBaseException;
+
 import ru.atc.cih.common.datatypes.MyTestInput;
 import ru.atc.cih.common.datatypes.MyTestOutput;
-
 import amdocs.oms.cih.services.base.CihStatelessServiceBase;
 import amdocs.oms.infra.ErrorCode;
+
 
 public class XMyTestClassImpl extends CihStatelessServiceBase {
 
     private MyTestInput myTestInput;
-    private MyTestOutput myTestOutput;
+	private MyTestOutput myTestOutput;
+	
 
-    public MyTestInput getMyTestInput() {
-        return myTestInput;
-    }
+    
+	public MyTestInput getMyTestInput() { return myTestInput; }
 
-    public MyTestOutput getMyTestOutput() {
-        return myTestOutput;
-    }
+	public MyTestOutput getMyTestOutput() { return myTestOutput; }
 
-    public void setMyTestInput(MyTestInput myTestInput) {
-        this.myTestInput = myTestInput;
-    }
 
-    public void setMyTestOutput(MyTestOutput myTestOutput) {
-        this.myTestOutput = myTestOutput;
-    }
+
+    public void setMyTestInput(MyTestInput myTestInput){
+		this.myTestInput = myTestInput;
+	}
+	public void setMyTestOutput(MyTestOutput myTestOutput){
+		this.myTestOutput = myTestOutput;
+	}
+	
 
     @Override
     protected ErrorCode executeImpl() throws CihBaseException {
@@ -37,7 +37,6 @@ public class XMyTestClassImpl extends CihStatelessServiceBase {
     @Override
     protected void inputMapping() throws CihBaseException {
         // TODO Auto-generated method stub
-
     }
 
     @Override
@@ -45,5 +44,4 @@ public class XMyTestClassImpl extends CihStatelessServiceBase {
         // TODO Auto-generated method stub
         return null;
     }
-
 }

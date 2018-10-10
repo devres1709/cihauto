@@ -11,6 +11,9 @@ import static org.junit.Assert.*;
 
 public class LogicClassTest {
 
+    public static final String TEST_DIR = TestUtils.TEST_DIR + "classes\\";
+
+
     @Test
     public void nameSetFromConstructor1() throws IOException {
         LogicClass logicClass = new LogicClass("Test", null);
@@ -51,27 +54,32 @@ public class LogicClassTest {
         String propForSecondDT = "MyStrinField";
         String typeForSecondDT = "String";
         DataType firstDT = new DataType("MyTestInput", propForFirstDT, typesForFirstDT, DataType.Type.INPUT);
+        firstDT.doFile(TEST_DIR);
         DataType secondDT = new DataType("MyTestOutput", propForSecondDT, typeForSecondDT, DataType.Type.OUTPUT);
+        secondDT.doFile(TEST_DIR);
         List<DataType>dt = new ArrayList<DataType>();
         dt.add(firstDT);
         dt.add(secondDT);
         LogicClass logicClass = new LogicClass("XMyTestClassImpl", dt);
+        logicClass.doFile(TEST_DIR);
+
 
         assertTrue(TestUtils.compareResult(
-                TestUtils.stringFromFileWithoutSpaces(new Scanner("src\\test\\resources\\XMyTestClassImpl.java")),
-                TestUtils.stringFromFileWithoutSpaces(new Scanner("src\\test\\resourcesAfterTest\\XMyTestClassImpl.java"))
-        ));
-        System.out.println("Class Ok!");
-        assertTrue(TestUtils.compareResult(
-                TestUtils.stringFromFileWithoutSpaces(new Scanner("src\\test\\resources\\MyTestInput.type")),
-                TestUtils.stringFromFileWithoutSpaces(new Scanner("src\\test\\resourcesAfterTest\\MyTestInput.type"))
+                TestUtils.stringFromFileWithoutSpaces(new Scanner(TestUtils.TEST_RESOURCES + "MyTestInput.type")),
+                TestUtils.stringFromFileWithoutSpaces(new Scanner(TEST_DIR + "MyTestInput.type"))
         ));
         System.out.println("XML 1 Ok!");
         assertTrue(TestUtils.compareResult(
-                TestUtils.stringFromFileWithoutSpaces(new Scanner("src\\test\\resources\\MyTestOutput.type")),
-                TestUtils.stringFromFileWithoutSpaces(new Scanner("src\\test\\resourcesAfterTest\\MyTestOutput.type"))
+                TestUtils.stringFromFileWithoutSpaces(new Scanner(TestUtils.TEST_RESOURCES + "MyTestOutput.type")),
+                TestUtils.stringFromFileWithoutSpaces(new Scanner(TEST_DIR + "MyTestOutput.type"))
         ));
         System.out.println("XML 2 Ok!");
+
+        assertTrue(TestUtils.compareResult(
+                TestUtils.stringFromFileWithoutSpaces(new Scanner(TestUtils.TEST_RESOURCES + "XMyTestClassImpl.java")),
+                TestUtils.stringFromFileWithoutSpaces(new Scanner(TEST_DIR + "XMyTestClassImpl.java"))
+        ));
+        System.out.println("Class Ok!");
     }
 
 

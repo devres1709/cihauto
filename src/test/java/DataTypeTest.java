@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 
 public class DataTypeTest {
 
-    private static String TEST_DIR = "src\\test\\resourcesAfterTest\\";
+    private static String TEST_DIR = TestUtils.TEST_DIR + "datatype\\";
 
     @Before
     public void createResourcesAfterTestDir() throws InterruptedException {
@@ -30,8 +30,8 @@ public class DataTypeTest {
         dataTypeCreateor.doFile(TEST_DIR);
         String newName = dataTypeCreateor.getName();
         assertEquals("PromoEquipSvcInfoInput", newName);
-        assertTrue(TestUtils.compareResult("src\\test\\resources\\PromoEquipSvcInfo.type",
-                "src\\test\\resourcesAfterTest\\" + newName + ".type"));
+        assertTrue(TestUtils.compareResult(TEST_DIR + newName + ".type",
+                TestUtils.TEST_RESOURCES + "PromoEquipSvcInfo.type"));
     }
 
     @Test
@@ -40,18 +40,18 @@ public class DataTypeTest {
         String prop = "OrderId ApId Lob Technology";
         DataType dataType = new DataType("CeaseOrderActionsInfoTest", prop, type, DataType.Type.INPUT);
         dataType.doFile(TEST_DIR);
-        assertTrue(TestUtils.compareResult("src\\test\\resourcesAfterTest\\CeaseOrderActionsInfoTestInput.type",
-                "src\\test\\resources\\XCeaseOrderActionsInfo.type"));
+        assertTrue(TestUtils.compareResult(TEST_DIR + "CeaseOrderActionsInfoTestInput.type",
+                 TestUtils.TEST_RESOURCES + "XCeaseOrderActionsInfo.type"));
     }
 
 
     @Test
-    public void doXmlWrongTest() throws Exception {
+    public void doXmlWrongTest(){
         String type = "String String String String";
         String prop = "OrderId ApId Lob Technology arg3";
         boolean error = false;
         try {
-            DataType dataType = new DataType("CeaseOrderActionsInfoTest", prop, type, DataType.Type.INPUT);
+            new DataType("CeaseOrderActionsInfoTest", prop, type, DataType.Type.INPUT);
         } catch (Exception e) {
             error = true;
         } finally {
@@ -67,8 +67,8 @@ public class DataTypeTest {
         dataType.doFile(TEST_DIR);
         String newName = dataType.getName();
         assertEquals("MyTestInput", newName);
-        assertTrue(TestUtils.compareResult("src\\test\\resources\\MyTestInput.type",
-                "src\\test\\resourcesAfterTest\\" + newName + ".type"));
+        assertTrue(TestUtils.compareResult(TestUtils.TEST_RESOURCES +  "MyTestInput.type",
+                TEST_DIR + newName + ".type"));
     }
 
 
