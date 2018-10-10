@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Impl.DataType Version="2.0" Description="" BaseCustomizationLevel="1" CustomizationLevel="1" BaseType="" Deprecated="false" DeprecatedDescription="" Final="false" Mutable="true" Release="" OldStyleAVo="false">
+<DataType Version="2.0" Description="" BaseCustomizationLevel="1" CustomizationLevel="1" BaseType="" Deprecated="false" DeprecatedDescription="" Final="false" Mutable="true" Release="" OldStyleAVo="false">
     <Properties>
         <Property Name="myIntTypeX1" Version="2.0" Description="" CustomizationLevel="1" BaseCustomizationLevel="1" Type="int" Deprecated="false" DeprecatedDescription="" Release="" InitMethod="" InitValue="" ReadOnly="false" DirtySupported="false" ReadOnlyByMe="false" DeprecatedByMe="false" />
         <Property Name="myBooleanTypeX1" Version="2.0" Description="" CustomizationLevel="1" BaseCustomizationLevel="1" Type="boolean" Deprecated="false" DeprecatedDescription="" Release="" InitMethod="" InitValue="" ReadOnly="false" DirtySupported="false" ReadOnlyByMe="false" DeprecatedByMe="false" />
     </Properties>
     <Constants />
-</Impl.DataType>
+</DataType>
 

@@ -106,7 +106,7 @@ public class Start {
         System.out.print("Enter name of AIF operation : ");
         Operation operation = new Operation(lineReader(), logicClass);
 
-        if(!ProjectBuilder.build("buildCih")){
+        if(!ProjectBuilder.isBuild("buildCih")){
             System.out.println("WRONG!!! BUILD CIH FAILED!!!");
             System.out.println("All files in project: ");
 
@@ -118,10 +118,10 @@ public class Start {
         System.out.print("Has class been added in APM(Y/N) : ");
 
         if(loopBreaker())
-            if(!ProjectBuilder.build("buildOmsAll")){
+            if(!ProjectBuilder.isBuild("buildOmsAll")){
                 System.out.println("WRONG!!! BUILD OMS FAILED!!!");
             }
         else
-            System.out.println("You need add class to APM an do build OMS");
+            System.out.println("You need add class to APM an do isBuild OMS");
     }
 }

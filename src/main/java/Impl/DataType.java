@@ -16,7 +16,8 @@ public class DataType implements FileCreator {
         OUTPUT
     }
 
-
+    private static final String PATH_TO_TEMPLATE = "src\\main\\resources\\templates\\datatype.xml";
+    private static final String DEFAULT_PATH = "C:\\OMS\\EclipseWS\\cord9aif\\v81_10\\cih\\repository\\ru\\atc\\cih\\common\\datatypes\\";
     private DataType.Type type;
     private String name;
     private Map<String, String> propNameAndType = new LinkedHashMap<String, String>();
@@ -71,8 +72,6 @@ public class DataType implements FileCreator {
                     this.name = name;
                 break;
         }
-
-
     }
 
     public Map<String, String> getPropNameAndType() {
@@ -95,7 +94,6 @@ public class DataType implements FileCreator {
         this.type = io;
         setName(name);
         doPropNameAndTypeMap(properties, type);
-        doFile();
     }
 
     /**
@@ -104,6 +102,12 @@ public class DataType implements FileCreator {
      * @return true - if write is complete successfully
      */
     public boolean doFile() {
+        return doFile(null);
+    }
+
+
+    @Override
+    public boolean doFile(String pathToDir){
         try {
             StringBuilder userProp = new StringBuilder();
             for (Map.Entry<String, String> entry : propNameAndType.entrySet()) {
@@ -113,10 +117,14 @@ public class DataType implements FileCreator {
             userProp.append("\n");
 
             StringBuilder result = new StringBuilder();
-            Scanner scanner = new Scanner(new File("src\\main\\resources\\templates\\datatype.xml"));
-            //output dir ru.atc.cih.datatype.general
-            //String dir = "src\\test\\resourcesAfterTest\\"; // - test
-            String dir = "C:\\OMS\\EclipseWS\\cord9aif\\v81_10\\cih\\repository\\ru\\atc\\cih\\common\\datatypes\\";
+            Scanner scanner = new Scanner(new File(PATH_TO_TEMPLATE));
+
+            String dir;
+            if(pathToDir == null)
+                dir = DEFAULT_PATH;
+            else
+                dir = pathToDir;
+
             BufferedWriter writer = new BufferedWriter(new FileWriter(dir + name + ".type"));
             while (scanner.hasNext())
                 result.append(scanner.nextLine() + "\n");

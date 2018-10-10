@@ -26,14 +26,14 @@ public class CihAutoTest {
 
         FileCreator zlass = new LogicClass("XCihAutoImpl", dataTypeList);
         FileCreator oper = new Operation("XcihAutoOper", (LogicClass)zlass);
-        ProjectBuilder.build("buildCih");
+        ProjectBuilder.isBuild("buildCih");
 
         System.out.println("add XCihAutoImpl.java in APM from:\n C:\\OMS\\EclipseWS\\cord9deploy\\v81_10\\application_server\\src\\ru\\atc\\oms\\cih\\services\\orderingactivities");
 
         System.out.println("After adding of class in APM enter anywhere text, and press ENTER");
         Scanner scanner = new Scanner(System.in);
         String answer = scanner.nextLine();
-        ProjectBuilder.build("buildOmsAll");
+        ProjectBuilder.isBuild("buildOmsAll");
 
 
 

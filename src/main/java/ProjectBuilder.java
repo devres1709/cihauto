@@ -5,12 +5,12 @@ import java.io.PrintStream;
 
 public class ProjectBuilder {
 
-    public static boolean build(String scriptName) throws IOException, InterruptedException {
+    public static boolean isBuild(String scriptName) throws IOException, InterruptedException {
         Process proc = Runtime.getRuntime().exec("C:\\scripts\\" + scriptName + ".bat");
 
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
         PrintStream ps = new PrintStream(System.out, true, "UTF-8");
-
+        
         String result;
         while ((result = stdInput.readLine()) != null) {
             if(result.contains("BUILD FAILED"))

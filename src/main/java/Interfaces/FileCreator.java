@@ -1,10 +1,12 @@
 package Interfaces;
 
+import java.io.File;
+
 public interface FileCreator {
     /**
-     * This method implement generation of XML-file
-     * and save it
-     * @return true - if write is complete successfully
+     *
+     * @param pathToDir - path to directory
+     * @return if file has been written - true
      */
-    boolean doFile();
+    boolean doFile(String pathToDir);
 }

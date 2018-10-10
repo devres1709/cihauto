@@ -17,6 +17,8 @@ public class Operation implements FileCreator {
 
     private String name;
     private LogicClass logicClass;
+    private static final String PATH_TO_TEMPLATE = "src\\main\\resources\\templates\\oper.xml";
+    private static final String DEFAULT_PATH = "C:\\OMS\\EclipseWS\\cord9aif\\v81_10\\cih\\repository\\com\\amdocs\\cih\\services\\oms\\interfaces\\IOmsServices\\";
     /*
     <ParameterOrder>
         ...
@@ -52,7 +54,6 @@ public class Operation implements FileCreator {
     public Operation(String name, LogicClass logicClass) {
         this.name = name;
         this.logicClass = logicClass;
-        doFile();
     }
 
     private static String propertyInput = "<Input Name=\"{TYPE}\" Description=\"\" Usage=\"Optional\" DefaultValue=\"\" DataType=\"ru.atc.cih.common.datatypes.{TYPE}\" CustomizationLevel=\"1\" BaseCustomizationLevel=\"1\" ExternalType=\"false\">";
@@ -105,19 +106,18 @@ public class Operation implements FileCreator {
     }
 
 
-    /**
-     * This method implement generation of XML-file
-     * and save it in ru.atc.cih.common.datatypes
-     * @return true - if write is complete successfully
-     */
-    public boolean doFile(){
+    @Override
+    public boolean doFile(String path){
         try {
-            Scanner scanner = new Scanner(new File("src\\main\\resources\\templates\\oper.xml"));
+            Scanner scanner = new Scanner(new File(PATH_TO_TEMPLATE));
             StringBuilder sb = new StringBuilder();
             while (scanner.hasNextLine())
                 sb.append(scanner.nextLine() + "\n");
-
-            String dir = "C:\\OMS\\EclipseWS\\cord9aif\\v81_10\\cih\\repository\\com\\amdocs\\cih\\services\\oms\\interfaces\\IOmsServices\\"; //"src\\test\\resourcesAfterTest\\";
+            String dir;
+            if(path == null)
+                dir = DEFAULT_PATH;
+            else
+                dir = path;
             BufferedWriter writer = new BufferedWriter(new FileWriter(dir + name + ".oper"));
             writer.write(sb.toString().replace("{INPUT_PROP}", doInputsBlock())
                     .replace("{OUTPUT_PROP}", doOutputBlock())
@@ -130,6 +130,11 @@ public class Operation implements FileCreator {
             return false;
         }
         return true;
+    }
+
+
+    public boolean doFile(){
+        return doFile(null);
     }
 
 
